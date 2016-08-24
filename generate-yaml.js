@@ -26,7 +26,7 @@ fs.readdir(emojiFolder, (err, files) => {
 function createItem(name) {
   return `
   - name: ${path.parse(name).name}
-    src: ${emojiFolder}/${name}`
+    src: https://raw.githubusercontent.com/guyfedwards/emoji/master/${name}`
 }
 
 function validExtension(file) {
