@@ -8,7 +8,7 @@ const args = process.argv.slice(2)
 
 const title = args[0] || 'Default title'
 const yamlFile = args[1] || './default.yaml'
-const emojiFolder = args[3] || '.'
+const emojiFolder = args[3] || './emoji'
 
 let yaml = []
 
