@@ -5,7 +5,7 @@ test:
 
 deployment:
   slack:
-    branch: circleci
+    branch: master
     commands:
       - ./generate-yaml.js
       - node --harmony ./node_modules/emojipacks/bin/emojipacks
