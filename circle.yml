@@ -1,0 +1,12 @@
+---
+test:
+  override:
+    - echo "test"
+
+deployment:
+  slack:
+    branch: circleci
+    commands:
+      - ./generate-yaml.js
+      - ./node_modules/emojipacks/bin/emojipacks
+

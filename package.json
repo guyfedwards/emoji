@@ -1,0 +1,19 @@
+{
+  "name": "emoji",
+  "version": "1.0.0",
+  "description": "",
+  "main": "generate-yaml.js",
+  "scripts": {
+    "generate": "./generate-yaml.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/guyfedwards/emoji.git"
+  },
+  "author": "Guy Edwards",
+  "license": "MIT",
+  "homepage": "https://github.com/guyfedwards/emoji#readme",
+  "dependencies": {
+    "emojipacks": "git+https://git@github.com/obscurerichard/emojipacks.git#env-config"
+  }
+}
