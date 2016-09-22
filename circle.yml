@@ -8,5 +8,5 @@ deployment:
     branch: circleci
     commands:
       - ./generate-yaml.js
-      - ./node_modules/emojipacks/bin/emojipacks
+      - node --harmony ./node_modules/emojipacks/bin/emojipacks
 
