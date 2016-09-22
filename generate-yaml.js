@@ -8,7 +8,7 @@ const args = process.argv.slice(2)
 
 const title = args[0] || 'Default title'
 const yamlFile = args[1] || './default.yaml'
-const emojiFolder = args[3] || '.'
+const emojiFolder = args[3] || './emoji'
 
 let yaml = []
 
@@ -26,7 +26,7 @@ fs.readdir(emojiFolder, (err, files) => {
 function createItem(name) {
   return `
   - name: ${path.parse(name).name}
-    src: https://raw.githubusercontent.com/guyfedwards/emoji/master/${name}`
+    src: https://raw.githubusercontent.com/guyfedwards/emoji/master/emoji/${name}`
 }
 
 function validExtension(file) {
