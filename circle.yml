@@ -1,0 +1,12 @@
+---
+test:
+  override:
+    - echo "test"
+
+deployment:
+  slack:
+    branch: master
+    commands:
+      - ./generate-yaml.js
+      - node --harmony ./node_modules/emojipacks/bin/emojipacks
+
