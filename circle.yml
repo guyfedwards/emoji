@@ -8,6 +8,6 @@ deployment:
     branch: master
     commands:
       - ./generate-yaml.js
-      - ./scripts/export-slack-env && node --harmony ./node_modules/emojipacks/bin/emojipacks
-      - ./scripts/export-slack-env BEN && node --harmony ./node_modules/emojipacks/bin/emojipacks
+      - bash ./scripts/export-slack-env && node --harmony ./node_modules/emojipacks/bin/emojipacks
+      - bash ./scripts/export-slack-env BEN && node --harmony ./node_modules/emojipacks/bin/emojipacks
 
