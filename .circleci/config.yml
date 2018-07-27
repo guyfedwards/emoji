@@ -10,8 +10,8 @@ jobs:
     steps:
       - checkout
       - run:
-          command: npm install
+          command: yarn install
       - run:
           command: |
             ./generate-yaml.js
-            bash ./scripts/import
+            ./scripts/import
