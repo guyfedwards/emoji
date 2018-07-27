@@ -1,0 +1,17 @@
+version: 2.0
+
+jobs:
+  build:
+    docker:
+      - image: guyfedwards/alpine-node-git-bash
+    branches:
+      only:
+        - master
+    steps:
+      - checkout
+      - run:
+          command: npm install
+      - run:
+          command: |
+            ./generate-yaml.js
+            bash ./scripts/import-into
