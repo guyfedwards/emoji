@@ -14,6 +14,6 @@
   "license": "MIT",
   "homepage": "https://github.com/guyfedwards/emoji#readme",
   "dependencies": {
-    "emojipacks": "git+https://git@github.com/guyfedwards/emojipacks#env"
+    "emojipacks": "git+https://github.com/lambtron/emojipacks#master"
   }
 }

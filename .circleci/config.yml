@@ -14,4 +14,4 @@ jobs:
       - run:
           command: |
             ./generate-yaml.js
-            bash ./scripts/import-into
+            bash ./scripts/import
