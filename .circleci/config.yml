@@ -13,5 +13,5 @@ jobs:
           command: yarn install
       - run:
           command: |
-            ./generate-yaml.js
+            ./generate-yaml.js --diffOnly
             ./scripts/import

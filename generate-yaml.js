@@ -1,20 +1,41 @@
 #!/usr/bin/env node
 
 'use strict';
+const {execSync} = require('child_process');
 const fs = require('fs');
 const path = require('path');
+const argv = require('yargs').argv;
 
-const args = process.argv.slice(2);
-
-const title = args[0] || 'Default title';
-const yamlFile = args[1] || './default.yaml';
-const emojiFolder = args[3] || './emoji';
+const title = argv.title || 'Default title';
+const yamlFile = argv.file || './default.yaml';
+const emojiFolder = argv.src || './emoji';
+const diffOnly = argv.diffOnly || false;
 
 let yaml = [];
 
+const splitLine = line => {
+  const [last] = line.split('/').reverse();
+  return last;
+};
+
+const getDiffFiles = () => {
+  const stdout = execSync(`git diff --name-only HEAD..HEAD~1 ${emojiFolder}`, {
+    encoding: 'utf8',
+  });
+  return stdout
+    .split('\n')
+    .map(splitLine)
+    .filter(Boolean);
+};
+
 fs.readdir(emojiFolder, (err, files) => {
   yaml.push(`title: ${title}\nemojis:`);
-  files.forEach(file => {
+  const diffFiles = getDiffFiles();
+  const filteredFiles = diffOnly
+    ? files.filter(f => diffFiles.indexOf(f) !== -1)
+    : files;
+
+  filteredFiles.forEach(file => {
     if (validExtension(file)) {
       yaml.push(createItem(file));
     }
