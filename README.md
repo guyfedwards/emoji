@@ -1,22 +1,30 @@
 # emoji
 continuous emoji deployment
 
-### configuration
-config is done through the following env vars:
+### Configuration
+
 ```
-SLACK_EMAIL
-SLACK_PASSWORD
+SLACK_TOKEN
 SLACK_SUBDOMAIN # the first part of domain <this>.slack.com
 ```
 
-### importing
-you can run `scripts/import` to kick off the upload of `default.yaml`
+### Importing
+
 ```
-$./scripts/import
+$ ./import
 ```
 
-### generate yaml file
-You can generate a yaml file to use for bulk upload with [emojipacks](https://github.com/lambtron/emojipacks).
+### Getting a Slack Token
+
+Open any signed in slack window, e.g. subdomain.slack.com/messages, right click
+anywhere > inspect element. Open the console and paste:
+
 ```
-$ ./generate-yaml.js <emojipack title> <path to yaml> <emoji dir>
+window.prompt("your api token is: ",/api_token: "(.*)"/.exec(document.body.innerHTML)[1])
 ```
+
+> You will be prompted with your api token! From what I can tell these last
+> anywhere from a few days to indefinitely. Currently, user tokens follow the
+> format: xoxs-(\w{12}|\w{10})-(\w{12}|\w{11})-\w{12}-\w{64}
+
+

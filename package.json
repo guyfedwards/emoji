@@ -14,7 +14,8 @@
   "license": "MIT",
   "homepage": "https://github.com/guyfedwards/emoji#readme",
   "dependencies": {
-    "emojipacks": "git+https://github.com/lambtron/emojipacks#master",
-    "yargs": "^12.0.1"
+    "dotenv-safe": "^6.1.0",
+    "emojme": "jackellenberger/emojme",
+    "slack-node": "^0.1.8"
   }
 }

@@ -1,0 +1,36 @@
+#!/bin/node
+
+const fs = require('fs');
+const path = require('path');
+const emojme = require('emojme');
+const Slack = require('slack-node');
+
+require('dotenv-safe').config()
+
+const dir = 'emoji';
+const subdomain = process.env.SLACK_SUBDOMAIN;
+const token = process.env.SLACK_TOKEN;
+const channel = process.env.SLACK_CHANNEL || '#general';
+
+const slack = new Slack(token);
+
+const isImage = f => new Set(['.png', '.jpg', '.jpeg', '.gif']).has(path.extname(f));
+
+fs.readdir(dir, (err, files) => {
+  emojme.add(subdomain, token, {
+    bustCache: true,
+    src: files.filter(isImage).map(file => path.join(dir, file)),
+  }).then(results => {
+    const uploaded = results[subdomain].emojiList;
+    const text = uploaded.map(e => `:${e.name}: (${e.name})`).join(' ');
+
+    if (uploaded.length) {
+      slack.api('chat.postMessage', {
+        text: `New Emoji: ${text}`,
+        channel: channel
+      }, (err, response) => {
+        err && console.error(err);
+      });
+    }
+  });
+});
