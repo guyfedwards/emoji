@@ -22,15 +22,26 @@ fs.readdir(dir, (err, files) => {
     src: files.filter(isImage).map(file => path.join(dir, file)),
   }).then(results => {
     const uploaded = results[subdomain].emojiList;
-    const text = uploaded.map(e => `:${e.name}: (${e.name})`).join(' ');
+    const errors = results[subdomain].errorList;
 
-    if (uploaded.length) {
+    const successful = uploaded.filter(file => {
+      return !errors.find(errored => errored.name === file.name);
+    });
+
+    if (successful.length) {
+      const text = successful.map(e => `:${e.name}: (${e.name})`).join(' ');
+
       slack.api('chat.postMessage', {
         text: `New Emoji: ${text}`,
         channel: channel
       }, (err, response) => {
         err && console.error(err);
       });
+    }
+
+    if (errors.length) {
+      // This should cause the CI to fail
+      process.exit(1);
     }
   });
 });
