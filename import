@@ -1,0 +1,20 @@
+#!/bin/node
+
+const fs = require('fs');
+const path = require('path');
+const emojme = require('emojme');
+
+require('dotenv-safe').config()
+
+const dir = 'emoji-new';
+const subdomain = process.env.SLACK_SUBDOMAIN;
+const token = process.env.SLACK_TOKEN;
+
+const isImage = f => new Set(['.png', '.jpg', '.jpeg', '.gif']).has(path.extname(f));
+
+fs.readdir(dir, (err, files) => {
+  emojme.add(subdomain, token, {
+    bustCache: true,
+    src: files.filter(isImage).map(file => path.join(dir, file)),
+  });
+});

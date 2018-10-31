@@ -1,3 +1,0 @@
-#!/bin/bash
-
-./node_modules/.bin/emojipacks -s $SLACK_SUBDOMAIN -e $SLACK_EMAIL -p $SLACK_PASSWORD -y default.yaml;
