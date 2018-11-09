@@ -15,7 +15,7 @@
   "homepage": "https://github.com/guyfedwards/emoji#readme",
   "dependencies": {
     "dotenv-safe": "^6.1.0",
-    "emojme": "^1.3.1",
+    "emojme": "jackellenberger/emojme",
     "slack-node": "^0.1.8"
   }
 }
