@@ -1,0 +1,19 @@
+#!/usr/bin/env python3
+from os import listdir,path
+import json
+
+def strip_extensions(name):
+    filename, _ = path.splitext(name)
+    return filename
+
+with open('./weemoji_builtin.json', 'r') as f:
+    builtin = json.load(f)
+
+dir = listdir('../emoji')
+custom_emoji = list(map(strip_extensions, dir))
+
+data = {'emoji': builtin['emoji'] + custom_emoji}
+
+with open('weemoji.json', 'w') as f:
+    json.dump(data, f)
+
