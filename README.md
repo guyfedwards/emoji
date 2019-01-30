@@ -28,3 +28,13 @@ window.prompt("your api token is: ",/api_token: "(.*)"/.exec(document.body.inner
 > format: xoxs-(\w{12}|\w{10})-(\w{12}|\w{11})-\w{12}-\w{64}
 
 
+### Weechat autocompletion
+Copy the existing file from `./weechat` to your weechat config directory, most likely:
+```
+$ cp ./weechat/weemoji.json ~/.weechat/
+```
+
+To generate new autocomplete file, run the script in `./weechat`. With the new file generated you can copy with the command above.
+```
+$ ./weechat/generate_json
+```
