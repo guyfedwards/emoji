@@ -13,4 +13,4 @@ jobs:
           command: yarn install
       - run:
           name: Upload new emoji
-          command: node import
+          command: ./import
